@@ -10,36 +10,43 @@ const VideoPage = () => {
 
   useEffect(() => {
     const myMeeting = async (element) => {
-      // Generate Kit Token
-      const appID = APP_ID;
-      const serverSecret = SERVER_SECRET;
-      const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, Date.now().toString(), "Ankit");
-      
-      // Create instance object from Kit Token
-      const zp = ZegoUIKitPrebuilt.create(kitToken);
-      
-      // Start the call
-      zp.joinRoom({
-        container: element,
-        sharedLinks: [
-          {
-            name: 'Personal link',
-           url: `${window.location.protocol}//${window.location.host}${window.location.pathname}`
+      try {
+        // Generate Kit Token
+        const appID = APP_ID;
+        const serverSecret = SERVER_SECRET;
+        const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, Date.now().toString(), "Ankit");
+
+        // Log the generated kit token for debugging
+        console.log('Generated Kit Token:', kitToken);
+        
+        // Create instance object from Kit Token
+        const zp = ZegoUIKitPrebuilt.create(kitToken);
+
+        // Start the call
+        zp.joinRoom({
+          container: element,
+          sharedLinks: [
+            {
+              name: 'Personal link',
+              url: `${window.location.protocol}//${window.location.host}${window.location.pathname}`,
+            },
+          ],
+          scenario: {
+            mode: ZegoUIKitPrebuilt.OneONoneCall,
           },
-        ],
-        scenario: {
-          mode: ZegoUIKitPrebuilt.OneONoneCall, // Ensure you are using the correct mode here
-        },
-      });
+        });
+      } catch (error) {
+        console.error('Error joining the room:', error);
+      }
     };
 
     if (meetingRef.current) {
       myMeeting(meetingRef.current);
     }
-  }, [roomID]); // Dependency array to run the effect when roomID changes
+  }, [roomID]);
 
   return (
-    <div ref={meetingRef} style={{ width: '100%', height: '100vh' }}></div> // Add styles for better visibility
+    <div ref={meetingRef} style={{ width: '100%', height: '100vh' }}></div>
   );
 };
 
