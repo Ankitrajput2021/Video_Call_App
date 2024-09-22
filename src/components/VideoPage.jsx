@@ -14,7 +14,7 @@ const VideoPage = () => {
       const appID = APP_ID;
       const serverSecret = SERVER_SECRET;
       const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, Date.now().toString(), "Ankit");
-
+      
       // Create instance object from Kit Token
       const zp = ZegoUIKitPrebuilt.create(kitToken);
       
@@ -24,7 +24,7 @@ const VideoPage = () => {
         sharedLinks: [
           {
             name: 'Personal link',
-            url: `${window.location.protocol}//${window.location.host}${window.location.pathname}?roomID=${roomID}`,
+           url: `${window.location.protocol}//${window.location.host}${window.location.pathname}`
           },
         ],
         scenario: {
