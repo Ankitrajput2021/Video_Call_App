@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/Homepage.css';  // Import the CSS file
+import '../styles/Homepage.css';  
 
 const Homepage = () => {
   const [input, setInput] = useState("");
@@ -23,6 +23,9 @@ const Homepage = () => {
         />
         <button onClick={handleClick} className="join-btn">Join</button>
       </div>
+      <footer className="footer">
+        <p>© 2024 Ankit Kumar</p>
+      </footer>
     </div>
   );
 };
