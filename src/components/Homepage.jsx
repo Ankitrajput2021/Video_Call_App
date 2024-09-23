@@ -18,7 +18,7 @@ const Homepage = () => {
           value={input} 
           onChange={(e) => setInput(e.target.value)}
           type="text"
-          placeholder="Enter your name"
+          placeholder="Enter Room ID"
           className="input-field"
         />
         <button onClick={handleClick} className="join-btn">Join</button>

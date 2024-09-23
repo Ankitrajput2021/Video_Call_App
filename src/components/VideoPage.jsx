@@ -14,7 +14,7 @@ const VideoPage = () => {
         // Generate Kit Token
         const appID = APP_ID;
         const serverSecret = SERVER_SECRET;
-        const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, Date.now().toString(), "Ankit");
+        const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, Date.now().toString(), "Enter Your Name");
 
         // Log the generated kit token for debugging
         console.log('Generated Kit Token:', kitToken);
