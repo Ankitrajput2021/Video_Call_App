@@ -4,9 +4,10 @@ import VideoPage from './components/VideoPage';
 import { useRoutes } from "react-router-dom";
 
 function AppRoutes() {
+  // Define routes for Homepage and VideoPage
   const routes = useRoutes([
-    { path: '/', element: <Homepage /> },
-    { path: '/room/:id', element: <VideoPage /> },
+    { path: '/', element: <Homepage /> },        // Route for the homepage
+    { path: '/room/:id', element: <VideoPage /> }, // Route for the video page, room ID passed in URL
   ]);
 
   return routes;
